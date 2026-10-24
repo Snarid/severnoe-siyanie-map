@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ГКМ «Северное сияние» — карта инфраструктуры и концепция освоения</title>
+<meta name="description" content="Интерактивная карта существующей и предлагаемой инфраструктуры ГКМ «Северное сияние» (Ямал): газ в Бованенково–Ухта, конденсат по ж/д, синтетический дизель GTL для Арктики.">
+<meta property="og:title" content="ГКМ «Северное сияние» — карта и концепция освоения">
+<meta property="og:description" content="Газ, конденсат и арктический дизель с одного промысла: инфраструктура, технология, экономика.">
+<meta property="og:image" content="assets/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<header class="top" id="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#hero" aria-label="На главную">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path d="M3 26 C9 10, 16 6, 29 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M3 26 C11 17, 18 14, 29 13" fill="none" stroke="#19c39c" stroke-width="3" stroke-linecap="round"/><circle cx="8" cy="26" r="3" fill="currentColor"/></svg>
+      <span>Северное сияние</span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#map">Карта</a><a href="#market">Рынок</a><a href="#tech">Технология</a><a href="#compare">Сравнение</a><a href="#econ">Экономика</a><a href="#risks">Риски</a><a href="#sources">Источники</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="hero">
+  <img class="hero__img" src="assets/hero.jpg" alt="Арктическая установка подготовки газа под северным сиянием" width="1672" height="941">
+  <div class="hero__shade"></div>
+  <div class="wrap hero__in">
+    <p class="tag">Кейс-чемпионат ООО «Газпром добыча Ямбург» · Арктический газовый ресурс</p>
+    <h1>ГКМ «Северное сияние»:<br>газ, конденсат и арктический дизель с одного промысла</h1>
+    <p class="hero__lead">Автономный промысел на востоке Ямала (70,30° с.ш., 71,40° в.д.). Газ уходит в действующую систему Бованенково–Ухта, конденсат — по железной дороге Обская–Бованенково–Карская, синтетический дизель (технология Фишера–Тропша) закрывает потребность северного завоза.</p>
+    <div class="kpis" role="list">
+      <div class="kpi" role="listitem"><b>12</b><span>млрд м³/год — полка добычи 2033–2043</span></div>
+      <div class="kpi" role="listitem"><b>0,49</b><span>млн т/год стабильного конденсата</span></div>
+      <div class="kpi" role="listitem"><b>50</b><span>тыс. т/год синтетического дизеля</span></div>
+      <div class="kpi" role="listitem"><b>+6,7</b><span>млрд руб NPV при 10 % (реальная ставка)</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--map" id="map" aria-labelledby="map-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Логистика и инфраструктура</p>
+      <h2 id="map-h">Что уже есть на Ямале и что мы строим</h2>
+      <p class="sec__lead">Сплошные линии — существующие объекты по данным OpenStreetMap. Пунктир — предлагаемые объекты проекта, трассы показаны схематично (по прямой между узлами).</p>
+    </div>
+  </div>
+  <div class="mapbox">
+    <div id="mapEl" class="map" role="region" aria-label="Интерактивная карта инфраструктуры"></div>
+    <aside class="panel" aria-label="Слои карты">
+      <h3>Слои</h3>
+      <fieldset>
+        <legend>Существующая инфраструктура</legend>
+        <label><input type="checkbox" data-layer="ex-rail" checked><i class="sw sw--rail"></i>Ж/д Обская–Бованенково–Карская</label>
+        <label><input type="checkbox" data-layer="ex-trunk" checked><i class="sw sw--trunk"></i>Магистральные газопроводы</label>
+        <label><input type="checkbox" data-layer="ex-field" checked><i class="sw sw--field"></i>Промысловые трубопроводы</label>
+        <label><input type="checkbox" data-layer="ex-pts" checked><i class="sw sw--dot"></i>Промыслы, порты, аэропорты, посёлки</label>
+      </fieldset>
+      <fieldset>
+        <legend>Проект «Северное сияние»</legend>
+        <label><input type="checkbox" data-layer="pr-gas" checked><i class="sw sw--pgas"></i>Газопровод ≈120 км до Бованенково</label>
+        <label><input type="checkbox" data-layer="pr-cond" checked><i class="sw sw--pcond"></i>Конденсатопровод до ст. Карская</label>
+        <label><input type="checkbox" data-layer="pr-road" checked><i class="sw sw--proad"></i>Автодорога в коридоре трубопроводов</label>
+        <label><input type="checkbox" data-layer="pr-dsl" checked><i class="sw sw--pdsl"></i>Сбыт дизеля (зимник, Обская губа, ж/д)</label>
+        <label><input type="checkbox" data-layer="pr-pts" checked><i class="sw sw--pdot"></i>УКПГ, модуль GTL, вахтовый посёлок</label>
+      </fieldset>
+      <div class="panel__btns">
+        <button type="button" data-fly="field">К месторождению</button>
+        <button type="button" data-fly="all">Весь Ямал</button>
+      </div>
+      <p class="panel__note">Нажмите на объект, чтобы увидеть параметры и источник.</p>
+    </aside>
+  </div>
+  <div class="wrap">
+    <ol class="routes">
+      <li><b>Газ</b><span>≈11,5 млрд м³/год товарного газа → узел Бованенково → СМГ Бованенково–Ухта (в 2025 г. по системе принято 101 млрд м³).</span></li>
+      <li><b>Конденсат</b><span>Конденсатопровод ≈120 км → налив на ст. Карская → ж/д 572 км до Обской (пропускная способность после расширения — 2,2 млн т/год).</span></li>
+      <li><b>Дизель</b><span>Сёяха (≈45 км) — причал на Обской губе для навигации на Мыс Каменный, Новый Порт; Сабетта; ж/д налив на Карской.</span></li>
+      <li><b>Люди</b><span>Вахтовый посёлок у УКПГ; смена авиарейсами через аэропорт Бованенково и по дороге коридора.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="market" aria-labelledby="market-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Анализ рынка · данные на октябрь 2026</p>
+      <h2 id="market-h">Рынок хочет все три продукта</h2>
+    </div>
+    <div class="mk">
+      <article class="mk__card mk__card--wide">
+        <h3>Дизель для Арктики: сейчас его везут за тысячи километров</h3>
+        <div class="mk__split">
+          <div class="chartbox chartbox--s"><canvas id="cDiesel" aria-label="Централизованный завоз ДТ в ЯНАО и мощность модуля GTL" role="img"></canvas></div>
+          <ul class="facts">
+            <li><b>64 тыс. т</b> ДТ в плане централизованного завоза ЯНАО на 2026 г., всего ТЭР — более 160 тыс. т <cite><a href="https://yamal-media.ru/narrative/v-janao-pojavitsja-novoe-napravlenie-dosrochnogo-zavoza-chto-i-kuda-budut-dostavljat-v-2026-godu">Ямал-Медиа, 2026</a></cite></li>
+            <li>Арктический ДТ поставляют Сургутский ЗСК (29 тыс. т) и Омский НПЗ (более 15 тыс. т) <cite><a href="https://ks-yanao.ru/narrative/ekonomika/na-jamale-nachalsja-tsentralizovannyj-zavoz-topliva-v-otdalennye-poselki">Красный Север, 2026</a></cite></li>
+            <li>Мыс Каменный, Сёяха, Гыда получают топливо в конце навигации <cite><a href="https://arctic-russia.ru/news/na-yamale-zavershen-tsentralizovannyy-zavoz-topliva-v-otdalennye-poseleniya-regiona/">Арктика — территория диалога</a></cite></li>
+            <li>Наш модуль GTL: <b>50 тыс. т/год</b>, это около 78 % объёма завоза, плюс собственные нужды промысла</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mk__card">
+        <h3>Газ</h3>
+        <p class="big">4 663–4 748 <small>руб/1000 м³ без НДС</small></p>
+        <p>Оптовая цена для ЯНАО по приказу ФАС № 1213/25 <cite><a href="https://pravo.ppt.ru/prikaz/fas/n-1213-25-326387">ФАС России</a></cite>; индексация оптовых цен — +9,6 % <cite><a href="http://government.ru/docs/all/162614/">Правительство РФ</a></cite>.</p>
+        <p>Выход в ЕСГ — через Бованенково–Ухта: 1 266 км, третья нитка <cite><a href="https://energybase.ru/pipeline/bovanenkovo-ukhta">Energybase</a></cite>.</p>
+      </article>
+      <article class="mk__card">
+        <h3>Конденсат</h3>
+        <p class="big">37 376 <small>руб/т нетбэк на промысле</small></p>
+        <p>Brent 65 $/барр. − дисконт 3 $, 8,8 барр./т, курс 85 руб/$, логистика 9 000 руб/т (допущения команды; Brent — <cite><a href="https://index.minfin.com.ua/markets/oil/2026-10/">Минфин.ua, окт. 2026</a></cite>).</p>
+        <p>Ж/д вывоз конденсата Бованенково расширяется до 2,2 млн т/год <cite><a href="https://www.npktrans.ru/media/novosti/yamaltransstroi-rasshirit-zhd-liniyu-dlya-vyvoza-uglevodorodov-s-bovanenkovskogo-mestorozhdeniya-k-portu-ust-luga/">НПК «Транс»</a></cite>.</p>
+      </article>
+      <article class="mk__card">
+        <h3>Цена дизеля</h3>
+        <p class="big">85 485 <small>руб/т, биржа, зимнее ДТ, с НДС</small></p>
+        <p>22.10.2026 <cite><a href="https://oilcapital.ru/news/2026-10-22/minenergo-na-toplivnom-rynke-otmechen-rost-proizvodstva-nachali-formirovatsya-zapasy-5714138">Нефть и Капитал</a></cite>. В модели: 55 000 руб/т = цена без НДС 22 % <cite><a href="https://www.nalog.gov.ru/new2026/">ФНС</a></cite> минус акциз 12 738 руб/т <cite><a href="https://www.nalog.gov.ru/rn27/news/tax_doc_news/16590707/">ФНС</a></cite>, с запасом.</p>
+      </article>
+      <article class="mk__card">
+        <h3>Горизонт 40 лет</h3>
+        <p>Цены в модели держим в реальном выражении 2026 г., без роста: это консервативная оценка. Спрос на ДТ в Арктике связан с завозом в посёлки и с подрядчиками промыслов. Альтернативный поставщик — НПЗ на юге округа и в Омске, поэтому логистическое плечо остаётся нашим преимуществом.</p>
+        <p class="ph">Прогноз спроса на ДТ до 2066 г. по ЯНАО в открытых источниках не найден — <b>[ЗАПОЛНИТЬ при наличии данных]</b>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="tech" aria-labelledby="tech-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Технология</p>
+      <h2 id="tech-h">Пять звеньев одной цепочки</h2>
+      <p class="sec__lead">Состав газа: метан 88,5 %, этан 5,5 %, пропан 3,0 %, бутаны 1,0 %, С5+ 0,8 % (мол.). Пласт: 2 800 м, 27 МПа, 70 °С. Запасы 320 млрд м³, КИГ 0,86 (данные кейса).</p>
+    </div>
+    <ol class="chain">
+      <li class="chain__st">
+        <span class="chain__n">01</span><h3>Добыча</h3>
+        <p><b>≈78 скважин</b>: ≈69 на полке (60 действующих и резерв) и ещё ≈9 в 2036–2039 гг. Наклонно-направленные с горизонтальными окончаниями, кустовое бурение. Дебит 0,55 млн м³/сут (допущение, аналоги — Бованенково, Харасавэй).</p>
+      </li>
+      <li class="chain__st">
+        <span class="chain__n">02</span><h3>НТС на турбодетандерах</h3>
+        <p>5 ТДА (4 рабочих и 1 резервный) по 8,4 млн м³/сут <cite><a href="https://compressormash.ru/pressroom/publications/981/">Казанькомпрессормаш</a></cite>. Охлаждение до −35…−40 °С; энергия расширения идёт на компрессорную ступень. Вход ТДА ограничен 10–12 МПа <cite><a href="https://cyberleninka.ru/article/n/perspektivy-i-problemy-sozdaniya-inversivnyh-detander-kompressornyh-ustanovok-dlya-primeneniya-v-sostave-sistem-obustroystva">КиберЛенинка</a></cite>, поэтому перед ТДА стоит дросселирование. Отечественные ТДА на магнитных подшипниках уже работают на Бованенково и Ковыкте <cite><a href="https://turbokholod.ru/">АО «Турбохолод»</a></cite>.</p>
+      </li>
+      <li class="chain__st">
+        <span class="chain__n">03</span><h3>Стабилизация конденсата</h3>
+        <p>Потенциал С5+ в сыром газе — <b>33,3 г/м³</b>. С учётом части бутанов выход стабильного конденсата составит <b>41,3 кг на 1000 м³</b> (на НТС с дросселированием — 37,3). Содержание С4 ограничиваем по ДНП ≤ 66,7 кПа: на УКПГ-2 Ковыкты 30 % проб превышали эту норму.</p>
+      </li>
+      <li class="chain__st">
+        <span class="chain__n">04</span><h3>Регенерация метанола</h3>
+        <p>Ректификационная колонна на площадке УКПГ: водометанольный раствор разделяется, метанол возвращается в цикл ингибирования. Установка изолирована от внешних процессов. Подвоз метанола нужен только на восполнение потерь с газом и конденсатом <b>[норматив потерь — ЗАПОЛНИТЬ по проекту]</b>.</p>
+      </li>
+      <li class="chain__st chain__st--hl">
+        <span class="chain__n">05</span><h3>Дизель по Фишеру–Тропшу</h3>
+        <p>На входе ≈167 млн м³/год газа (1,4 % полки). Получаем 0,40 т синтетических УВ на 1000 м³ <cite><a href="https://ru.infratechnology.ru/technology/">INFRA</a></cite>, это ≈67 тыс. т/год. После гидроизомеризации — 50 тыс. т ДТ (доля 75 % — допущение) и 17 тыс. т нафты в конденсат. Катализатор российский.</p>
+      </li>
+    </ol>
+    <div class="bal">
+      <h3>Материальный баланс на 1000 м³ сырого газа</h3>
+      <div class="bal__row">
+        <div class="bal__bar" role="img" aria-label="Баланс: 988 м³ товарного газа, 41,3 кг конденсата">
+          <span style="--w:92%" class="b1">988 м³ товарного газа · 36,6 МДж/м³</span>
+          <span style="--w:8%" class="b2">41,3 кг</span>
+        </div>
+      </div>
+      <p class="bal__note">Расчёт команды по составу из кейса: степени извлечения С5+ 96 %, iC4 35 %, nC4 42 % (допущения для НТС на ТДА; подтвердить моделированием).</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="compare" aria-labelledby="cmp-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Сравнение вариантов</p>
+      <h2 id="cmp-h">Почему выбран вариант с ТДА и GTL</h2>
+    </div>
+    <div class="tblwrap">
+    <table class="cmp">
+      <thead><tr><th scope="col">Показатель</th><th scope="col">А: НТС без оптимизации</th><th scope="col">А: НТС + кооперация</th><th scope="col">Б: + СУГ</th><th scope="col">В: + этан</th><th scope="col" class="hl">Наш: ТДА + GTL</th></tr></thead>
+      <tbody id="cmpBody"></tbody>
+    </table>
+    </div>
+    <div class="why">
+      <p><b>Автономность.</b> Собственный дизель, метанол возвращается в цикл, энергия от газа промысла.</p>
+      <p><b>Спрос.</b> Газ уходит в ЕСГ, конденсат — по железной дороге, дизель замещает завоз.</p>
+      <p><b>Низкий CAPEX.</b> Используем дорогу, аэропорт, базу, СМГ и железную дорогу Бованенково.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="econ" aria-labelledby="econ-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Экономика · цены 2026 г., реальная ставка 10 %</p>
+      <h2 id="econ-h">Окупаемость в 2039 году</h2>
+    </div>
+    <div class="ek">
+      <div class="ek__kpi"><b>+6,7</b><span>NPV, млрд руб</span></div>
+      <div class="ek__kpi"><b>10,3 %</b><span>IRR (реальная)</span></div>
+      <div class="ek__kpi"><b>368</b><span>CAPEX, млрд руб</span></div>
+      <div class="ek__kpi"><b>2039</b><span>дисконтированная окупаемость</span></div>
+    </div>
+    <div class="charts">
+      <figure class="chartcard chartcard--wide"><figcaption>Накопленный дисконтированный денежный поток, млрд руб</figcaption><div class="chartbox"><canvas id="cNpv" role="img" aria-label="Кривая NPV: наш вариант и вариант А"></canvas></div></figure>
+      <figure class="chartcard"><figcaption>Структура CAPEX, млрд руб</figcaption><div class="chartbox"><canvas id="cCapex" role="img" aria-label="Структура капитальных затрат"></canvas></div></figure>
+      <figure class="chartcard chartcard--wide"><figcaption>Добыча и продукция по годам</figcaption><div class="chartbox"><canvas id="cProd" role="img" aria-label="Профиль добычи газа, конденсата и дизеля"></canvas></div></figure>
+      <figure class="chartcard"><figcaption>Выручка за 2031–2066 гг., млрд руб</figcaption><div class="chartbox"><canvas id="cRev" role="img" aria-label="Структура выручки"></canvas></div></figure>
+      <figure class="chartcard chartcard--wide"><figcaption>Чувствительность NPV, млрд руб (база +6,7)</figcaption><div class="chartbox chartbox--t"><canvas id="cTor" role="img" aria-label="Торнадо-диаграмма чувствительности"></canvas></div></figure>
+      <figure class="chartcard"><figcaption>Модуль GTL отдельно: прирост NPV от цены ДТ</figcaption><div class="chartbox"><canvas id="cFt" role="img" aria-label="NPV модуля GTL в зависимости от цены дизеля"></canvas></div>
+        <p class="fig__note">При биржевом нетбэке 55 тыс. руб/т модуль выходит в ноль (+0,4 млрд руб, IRR 10,5 %). Если продавать ДТ потребителям Арктики по цене с учётом доставки (≈70 тыс. руб/т), получаем +3,6 млрд руб. Ориентир: розничная цена ДТ 86,58 руб/л по Росстату (<a href="https://ru.themoscowtimes.com/2026/10/21/roznichnye-tseny-na-benzin-v-rf-snizilis-na-07-za-13-19-okt-rosstat-a209211">The Moscow Times, 21.10.2026</a>), при плотности 0,84 это ≈72 тыс. руб/т без НДС и акциза.</p></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="risks" aria-labelledby="risk-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Риски и устойчивость</p>
+      <h2 id="risk-h">Главные риски — CAPEX и цена газа</h2>
+    </div>
+    <div class="rk">
+      <div class="matrix" role="img" aria-label="Матрица рисков: вероятность и влияние">
+        <span class="ax ax--y">Влияние →</span><span class="ax ax--x">Вероятность →</span>
+        <div class="grid3"></div>
+        <i class="rdot" style="--x:2.5;--y:2.6" data-n="1"></i>
+        <i class="rdot" style="--x:1.6;--y:2.5" data-n="2"></i>
+        <i class="rdot" style="--x:1.5;--y:1.6" data-n="3"></i>
+        <i class="rdot" style="--x:1.4;--y:1.3" data-n="4"></i>
+        <i class="rdot" style="--x:2.2;--y:1.5" data-n="5"></i>
+        <i class="rdot" style="--x:0.6;--y:1.4" data-n="6"></i>
+      </div>
+      <ol class="rlist">
+        <li><b>Рост CAPEX на 20 %</b> → NPV −48,8 млрд руб. Ответ: поэтапный ввод, ТИМ/BIM, снижение металлоёмкости эстакад, отечественное оборудование.</li>
+        <li><b>Цена газа на 20 % ниже</b> → NPV −43,8 млрд руб. Ответ: долгосрочный договор поставки, при росте цен — опцион СУГ.</li>
+        <li><b>Нет свободной мощности СМГ или ж/д</b>. Ответ: ТУ в 2027 г., долгосрочные договоры, резервуарный парк.</li>
+        <li><b>Технология GTL в Арктике</b> (первая установка такого масштаба). Ответ: модульная поставка, пилот, ввод через 2 года после первого газа.</li>
+        <li><b>Цена ДТ ниже 53 тыс. руб/т</b> (нетбэк). Ответ: прямые договоры с Ямалгосснабом и подрядчиками промыслов.</li>
+        <li><b>Экология и вечная мерзлота</b>. Ответ: термостабилизаторы грунтов, факел без дымления, мониторинг.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="ai" aria-labelledby="ai-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Новейшие технологии</p>
+      <h2 id="ai-h">Цифровой промысел с минимальным персоналом</h2>
+    </div>
+    <div class="ai">
+      <p><b>Цифровой двойник УКПГ</b>Оптимизация режима НТС и ТДА по составу газа и температуре воздуха.</p>
+      <p><b>ИИ-прогноз гидратообразования</b>Точная дозировка метанола по шлейфам, меньше потерь.</p>
+      <p><b>Предиктивное ТО</b>Диагностика ТДА и ДКС по вибрации и параметрам магнитных подвесов.</p>
+      <p><b>Дроны и спутниковый мониторинг</b>Контроль трасс в коридоре 120 км и состояния мерзлоты.</p>
+      <p><b>Удалённый диспетчерский центр</b>УКПГ работает без постоянного персонала на щите.</p>
+      <p class="ph">Эффект цифровых решений в OPEX модели не учтён — <b>[ЗАПОЛНИТЬ при наличии оценок]</b>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="sources" aria-labelledby="src-h">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Источники и допущения</p>
+      <h2 id="src-h">Откуда взяты цифры</h2>
+    </div>
+    <div class="src">
+      <div>
+        <h3>Данные (дата обращения — октябрь 2026)</h3>
+        <ul>
+          <li>Исходные данные месторождения — задание кейса «Арктический газовый ресурс», ООО «Газпром добыча Ямбург».</li>
+          <li>Геометрия железной дороги, трубопроводов, посёлков и аэропортов — <a href="https://www.openstreetmap.org/copyright">© участники OpenStreetMap</a> (ODbL), выгрузка 24.10.2026.</li>
+          <li>Завоз ДТ 2026 — <a href="https://yamal-media.ru/narrative/v-janao-pojavitsja-novoe-napravlenie-dosrochnogo-zavoza-chto-i-kuda-budut-dostavljat-v-2026-godu">Ямал-Медиа</a>; <a href="https://www.yamalgs.ru/press-center/news/novosti-kompanii/severnyy-zavoz-2022/">Ямалгосснаб, 2022</a>.</li>
+          <li>GTL: <a href="https://ru.infratechnology.ru/about/">INFRA Technology</a>; <a href="https://documents1.worldbank.org/curated/en/793481467996701787/pdf/101578-WP-PUBLIC-Box394816B-Associated-Gas-Monetization-via-miniGTL-Report-III-July-2015.pdf">World Bank, 2015</a>; <a href="http://neftianka.ru/energosreda-29-vladimir-mordkovich-o-texnologii-gtl/">В. Мордкович</a>.</li>
+          <li>Цены ДТ: <a href="https://portnews.ru/news/398536/">PortNews</a>, <a href="https://oilcapital.ru/news/2026-10-22/minenergo-na-toplivnom-rynke-otmechen-rost-proizvodstva-nachali-formirovatsya-zapasy-5714138">Нефть и Капитал</a>.</li>
+          <li>ТДА: <a href="https://turbokholod.ru/publish/opyt-razrabotki-i-vnedrenija-innovacijj-v-otechestvennom-turbomashinostroenii-kompanija-ao-turbokholod/">АО «Турбохолод»</a>; <a href="https://istina.msu.ru/download/10927562/1eQBFE:XcE5QiQCx0gUPC8N7kt5CDWXt3s/">ИСТИНА МГУ</a> (30 ТДА на УКПГ Бованенково).</li>
+          <li>Ж/д: <a href="https://www.gazprom.ru/press/news/reports/2013/yamalskiy-express/">Газпром, «Ямальский экспресс»</a>; СМГ: <a href="https://ukhtagrad.ru/masshtabnaia/">Ухта-град</a>, <a href="https://www.gem.wiki/Bovanenkovo-Ukhta_Gas_Pipeline">GEM Wiki</a>.</li>
+          <li>Налоги: НДПИ Ккг — <a href="https://www.interfax.ru/business/1056714">Интерфакс</a>; НДС 22 % — <a href="https://www.nalog.gov.ru/new2026/">ФНС</a>; акциз ДТ — <a href="https://www.nalog.gov.ru/rn27/news/tax_doc_news/16590707/">ФНС</a>.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ключевые допущения команды</h3>
+        <ul>
+          <li>Стоимость скважины 1,3 млрд руб; дебит 0,55 млн м³/сут.</li>
+          <li>CAPEX GTL 12,5 млрд руб (верх диапазона INFRA $500–1 500 за т/год с арктическим запасом); OPEX $65 за т.</li>
+          <li>Доля ДТ в синтетических УВ — 75 %; ТДА — 4,5 млрд руб за 5 агрегатов.</li>
+          <li>Базовая часть НДПИ газа 250 руб/1000 м³; НДПИ жидких УВ — 15 % нетбэка.</li>
+          <li>Логистика конденсата 9 000 руб/т; тариф терминала 500 руб/т — уточнить у перевозчика.</li>
+          <li>Трассы проекта на карте схематичны и требуют инженерных изысканий.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <p>Второй открытый чемпионат ООО «Газпром добыча Ямбург» по решению инженерной задачи (кейса). Команда <b>[НАЗВАНИЕ КОМАНДЫ]</b>.</p>
+    <p>Картография: © OpenFreeMap, © участники OpenStreetMap.</p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="app.js" defer></script>
+</body>
+</html>
