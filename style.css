@@ -261,3 +261,11 @@ cite a{color:var(--muted)}
 .foot__team{display:flex;align-items:center;gap:10px}
 .foot__team img{height:32px;width:auto;background:#fff;border-radius:6px;padding:3px}
 @media (max-width:600px){.team img{height:54px}.team b{font-size:1.25rem}.brand small{display:none}}
+
+.top__in .nav{margin-left:auto}
+.dl{display:inline-flex;align-items:center;gap:8px;flex:none;background:var(--blue);color:#fff;text-decoration:none;font-size:var(--t-sm);font-weight:700;padding:9px 16px;border-radius:var(--r-s);white-space:nowrap;transition:background .15s}
+.dl:hover{background:#1d4fd8}
+.dl:focus-visible{outline:3px solid #19c39c;outline-offset:2px}
+@media (max-width:420px){.dl{padding:9px 12px}.dl span{font-size:.8rem}}
+.brand{margin-right:auto;flex:none}
+.brand span{white-space:nowrap}
